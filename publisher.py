@@ -24,7 +24,6 @@ class TurtleController(Node):
             msg.angular.z = instructions[2]
             self.publisher_.publish(msg)
             time.sleep(instructions[3])
-            return self.move()
         except:
             time.sleep(2)
             msg = Twist()
@@ -33,10 +32,11 @@ class TurtleController(Node):
             msg.angular.z = 0.0
             self.publisher_.publish(msg)
             print('Deque Vazio')
-        return self.move()
+
 rclpy.init(args=None)
 controller = TurtleController()
-controller.move()
+while True:
+    controller.move()
 
 
 
